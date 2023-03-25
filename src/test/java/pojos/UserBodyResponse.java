@@ -3,7 +3,9 @@ package pojos;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class UserBody {
+public class UserBodyResponse {
+
+    private Long id;
     private String username;
     private String firstName;
     private String lastName;
@@ -12,10 +14,11 @@ public class UserBody {
     private String phone;
     private Integer userStatus;
 
-    public UserBody() {
+    public UserBodyResponse() {
     }
 
-    public UserBody(String username, String firstName, String lastName, String email, String password, String phone, Integer userStatus) {
+    public UserBodyResponse(Long id, String username, String firstName, String lastName, String email, String password, String phone, Integer userStatus) {
+        this.id = id;
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -26,10 +29,17 @@ public class UserBody {
     }
 
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getUsername() {
         return username;
     }
-
 
     public void setUsername(String username) {
         this.username = username;
@@ -85,8 +95,9 @@ public class UserBody {
 
     @Override
     public String toString() {
-        return "PetStoreSwaggerPojo{" +
-                "username='" + username + '\'' +
+        return "UserBodyResponse{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
